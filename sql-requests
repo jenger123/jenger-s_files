@@ -1,0 +1,5 @@
+create table lac2212 select distinct lac_id,cell_id, abonentimei from main_billing where lac_id=2212;
+create table lac3907 select distinct lac_id,cell_id, abonentimei from main_billing where lac_id=3907;
+create table lac3901 select distinct lac_id,cell_id, abonentimei from main_billing where lac_id=3901;
+create table imei070112 SELECT distinct abonentimei FROM `lac3907` WHERE abonentimei in (select abonentimei from lac3901) and abonentimei in (select abonentimei from lac2212)
+create table cellimei SELECT distinct cell_id,abonentimei FROM main_billing WHERE abonentimei (select abonentimei from imei070112)
